@@ -1,3 +1,3 @@
-console.log('hello typescript')
+console.log('hello typescript');
 
-const myLibrary: string[] = []
+const myLibrary: string[] = [];
