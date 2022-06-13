@@ -10,8 +10,8 @@ interface BookProps {
 
 /**
  * A book
- * Title: The title of the book
- * Author: The author of the book
+ * title: The title of the book
+ * author: The author of the book
  * pageCount: The number of pages of the book
  * read: Whether the book has been read or not
  */
