@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'react';
 import './css/Book.css';
 
 interface BookProps {
