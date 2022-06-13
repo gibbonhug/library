@@ -11,10 +11,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <div id='library'>
-      <Book title='title one' author='author' pageCount={100} read={false} />
-      <Book title='title one' author='author' pageCount={100} read={false} />
-      <Book title='title one' author='author' pageCount={100} read={false} />
-      <Book title='title one' author='author' pageCount={100} read={false} />
+      <Book title='Anna Karenina' author='Leo Tolstoy' pageCount={960} read={false} />
+      <Book title='As I Lay Dying' author='William Faulkner' pageCount={288} read={true} />
+      <Book title='Gone with the Wind' author='Margaret Mitchell' pageCount={1037} read={false} />
+      <Book title='Jane Eyre' author='Charlotte Brontë' pageCount={680} read={true} />
     </div>
   </React.StrictMode>
 );
