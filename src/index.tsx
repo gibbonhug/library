@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/style.css';
-import App from './App';
+import Book from './Book';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -10,7 +10,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <div id='library'>
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+    </div>
   </React.StrictMode>
 );
 
