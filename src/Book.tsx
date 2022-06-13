@@ -8,7 +8,6 @@ interface BookProps {
   read: boolean;
 }
 
-
 /**
  * A book
  * Title: The title of the book
