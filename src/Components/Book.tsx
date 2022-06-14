@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import '../css/Components/Book.css';
-
 
 interface BookProps {
   title: string;

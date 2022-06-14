@@ -2,8 +2,6 @@ import React from 'react';
 
 import Book from './Book';
 
-//import '../css/Components/Library.css';
-
 
 export default function Library() {
   return (
