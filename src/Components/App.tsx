@@ -8,9 +8,9 @@ import Babo from './Babo'; // temp
 
 export default function App() {
   return (
-    <div id='container'>
+    <div id='container-app'>
         <Nav />
-        <div id='meat'>
+        <div id='container-meat'>
             <Library />
             <AddButton />
             <Babo />
