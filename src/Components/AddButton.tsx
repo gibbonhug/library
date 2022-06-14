@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 export default function AddButton() {
+  const [txt, setTxt]: any[] = useState('Add a book?');
 
   const handleClick = () => {
-    console.log('you clicked me');
+    setTxt(txt === 'Add a book?'? 'I don\'t do anything lol' : 'Add a book?');
   }
 
   return (
@@ -11,7 +12,7 @@ export default function AddButton() {
       onClick={handleClick}
       type='button'
       id='add-button'>
-      Add A Book
+      {txt}
     </button>
   )
 }

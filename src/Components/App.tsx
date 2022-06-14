@@ -3,7 +3,7 @@ import React from 'react';
 import Nav from './Nav';
 import Library from './Library';
 import AddButton from './AddButton';
-
+import Babo from './Babo'; // temp
 
 
 export default function App() {
@@ -13,6 +13,7 @@ export default function App() {
         <div id='meat'>
             <Library />
             <AddButton />
+            <Babo />
         </div>
     </div>
   )
