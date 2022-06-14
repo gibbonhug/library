@@ -1,5 +1,7 @@
 import React from 'react';
-import './css/Book.css';
+
+//import '../css/Components/Book.css';
+
 
 interface BookProps {
   title: string;
@@ -17,7 +19,7 @@ interface BookProps {
  */
 export default function Book({title, author, pageCount, read}: BookProps ) {
   return (
-    <div>
+    <div className='book'>
       <ul>
         <li>Title: {title}</li>
         <li>Author: {author}</li>
