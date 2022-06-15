@@ -2,6 +2,9 @@
     border: 2px solid red;
     background: bisque;
     text-align: center;
+    > * {
+        margin: 1rem .5rem; // 1rem space between list of book info and del button
+    }
     ul {
         color: blue;
         li {
