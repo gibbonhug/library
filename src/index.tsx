@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import './css/main.css';
 
-import Container from './Components/App';
+import { App } from './Components/App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Container />
+    <App />
   </React.StrictMode>
 );

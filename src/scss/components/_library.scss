@@ -1,7 +1,7 @@
 #library {
     background-color: lavender;
     padding: 5rem;
-	display: grid;
+	display: grid; // books displayed in a grid
     gap: 1rem;
 	grid-template-columns: 1fr 1fr;
 }

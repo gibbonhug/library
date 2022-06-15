@@ -1,31 +1,28 @@
-import React from 'react';
+import React, { FC } from 'react';
 
+import { BookProps } from './component-interfaces/interfaces';
 
-export interface BookProps {
-  title: string;
-  author: string;
-  pageCount: number;
-  read: boolean;
-  id: number;
-}
 
 /**
- * A book entry
- * title: The title of the book
- * author: The author of the book
- * pageCount: The number of pages of the book
- * read: Whether the book has been read or not
- * id: Number id of the book entry for... bookkeeping B)
+ * A 'book' entry
+ * @param props: Book props:
+  * title: The title of the book
+  * author: The author of the book
+  * pageCount: The number of pages of the book
+  * read: Whether the book has been read or not
+  * id: Number id of the book entry for... bookkeeping B)
+ * @returns a 'book' div with class of 'book' that displays
+ * the book prop params
  */
-export default function Book({title, author, pageCount, read, id}: BookProps ) {
+export const Book:FC<BookProps> = (props) => {
   return (
     <div className='book'>
       <ul>
-        <li><span>Title:</span> {title}</li>
-        <li><span>Author:</span> {author}</li>
-        <li><span>Pages:</span> {pageCount}</li>
-        <li><span>Read:</span> {read.toString()}</li>
-        <li><span>ID:</span> {id}</li> 
+        <li><span>Title:</span> {props.title}</li>
+        <li><span>Author:</span> {props.author}</li>
+        <li><span>Pages:</span> {props.pageCount}</li>
+        <li><span>Read:</span> {props.read.toString()}</li>
+        <li><span>ID:</span> {props.id}</li> 
       </ul>
     </div>
   )

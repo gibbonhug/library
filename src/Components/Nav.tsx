@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 
-export default function Nav() {
+/**
+ * A nav bar with id of 'nav'
+ */
+export const Nav:FC = () => {
   return (
     <div id='nav'>
       Please Excuse My Dnav Abar Swag
