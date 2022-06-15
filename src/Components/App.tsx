@@ -10,9 +10,9 @@ import { LibraryProps, BookProps } from './component-interfaces/interfaces';
 
 /**
  * The 'home page'
- * @returns A div containing all other components; everything
- * nested inside a div of 'container-app';
- * everything except the header nested inside a div of 'container-meat'
+ * @returns A div containing all other components; everything 
+ * is nested inside a div of 'app-wrapper';
+ * everything except the header nested inside a div of 'app-meat'
  */
 const App: FC = () => {
   const [libraryArray, setLibraryArray] = useState([
@@ -24,12 +24,12 @@ const App: FC = () => {
   ]);
 
   return (
-    <div id='container-app'>
+    <div id='app-wrapper'>
       <Nav />
-      <div id='container-meat'>
-        <Library libraryArray={libraryArray} />
+      <div id='app-meat'>
+        <Library libraryArray={libraryArray} libraryTitle={'All Books'} />
 
-        <Library libraryArray={libraryArray.filter((thisBook: BookProps) => thisBook.read === true)} />
+        <Library libraryArray={libraryArray.filter((thisBook: BookProps) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} />
 
         <AddButton />
         <Babo />
