@@ -14,7 +14,7 @@ import { LibraryProps, BookProps } from './component-interfaces/interfaces';
  * nested inside a div of 'container-app';
  * everything except the header nested inside a div of 'container-meat'
  */
-export const App: FC = () => {
+const App: FC = () => {
   const [libraryArray, setLibraryArray] = useState([
     // initial books
     { title: 'Anna Karenina', author: 'Leo Tolstoy', pageCount: 960, read: false, id: 0 },
@@ -37,3 +37,5 @@ export const App: FC = () => {
     </div>
   )
 }
+
+export default App;
