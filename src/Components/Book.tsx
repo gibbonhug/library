@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 
-import DeleteButton from './DeleteButton';
-
 import { BookProps } from './component-interfaces/interfaces';
 
 
@@ -26,7 +24,12 @@ const Book:FC<BookProps> = (props) => {
         <li><span>Read:</span> {props.read.toString()}</li>
         <li><span>ID:</span> {props.id}</li> 
       </ul>
-      <DeleteButton />
+      <button
+        className='delete-button'
+        type='button'
+        onClick={() => console.log('you deleted me')}>
+          Delete
+      </button>
     </div>
   )
 }
