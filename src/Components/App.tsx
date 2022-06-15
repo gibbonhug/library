@@ -5,6 +5,8 @@ import { Library } from './Library';
 import { AddButton } from './AddButton';
 import { Babo } from './Babo'; // temp
 
+import { LibraryProps, BookProps } from './component-interfaces/interfaces';
+
 
 /**
  * The 'home page'
@@ -12,7 +14,7 @@ import { Babo } from './Babo'; // temp
  * nested inside a div of 'container-app';
  * everything except the header nested inside a div of 'container-meat'
  */
-export const App:FC = () => {
+export const App: FC = () => {
   const [libraryArray, setLibraryArray] = useState([
     // initial books
     { title: 'Anna Karenina', author: 'Leo Tolstoy', pageCount: 960, read: false, id: 0 },
@@ -23,12 +25,15 @@ export const App:FC = () => {
 
   return (
     <div id='container-app'>
-        <Nav />
-        <div id='container-meat'>
-            <Library libraryArray={libraryArray} /> 
-            <AddButton />
-            <Babo />
-        </div>
+      <Nav />
+      <div id='container-meat'>
+        <Library libraryArray={libraryArray} />
+
+        <Library libraryArray={libraryArray.filter((thisBook: BookProps) => thisBook.read === true)} />
+
+        <AddButton />
+        <Babo />
+      </div>
     </div>
   )
 }
