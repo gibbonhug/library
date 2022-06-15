@@ -29,7 +29,9 @@ const App: FC = () => {
    * @param id The id of the book to delete (is in bookInfo obj in book props)
    */
   const handleDelete = (id: number) => {
-    console.log('hi');
+    const newLibraryArray = libraryArray.filter(thisBook =>
+      thisBook.id !== id);
+    setLibraryArray(newLibraryArray);
   }
 
   return (
@@ -38,9 +40,10 @@ const App: FC = () => {
       <div id='app-meat'>
         <Library libraryArray={libraryArray} libraryTitle={'All Books'} handleDelete={handleDelete} />
 
-        <Library libraryArray={libraryArray.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete}/>
+        <Library libraryArray={libraryArray.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} />
 
         <AddButton />
+
         <Babo />
       </div>
     </div>

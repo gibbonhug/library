@@ -35,6 +35,7 @@ const Library:FC<LibraryProps> = (props) => {
         // there has to be a shorter way. i know i saw it somewhere and forgot where.
           bookInfo={thisBook}
           handleDelete={handleDelete}
+          key={thisBook.id}
         />
       )}
       </div>
