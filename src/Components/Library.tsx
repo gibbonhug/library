@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Book } from './Book';
+import Book from './Book';
 
 import { LibraryProps, BookProps } from './component-interfaces/interfaces';
 
@@ -11,7 +11,7 @@ import { LibraryProps, BookProps } from './component-interfaces/interfaces';
  * @returns A div with id of 'library' that displays the passed books
  * in a CSS Grid
  */
-export const Library:FC<LibraryProps> = (props) => {
+const Library:FC<LibraryProps> = (props) => {
   const libraryArray = props.libraryArray;
 
   return (
@@ -29,3 +29,5 @@ export const Library:FC<LibraryProps> = (props) => {
     </div>
   )
 }
+
+export default Library;

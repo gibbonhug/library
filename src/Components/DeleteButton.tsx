@@ -1,5 +1,17 @@
 import React, { FC } from 'react';
 
+
+const DeleteButton = () => {
+  return (
+    <div>DeleteButton</div>
+  )
+}
+
+export default DeleteButton;
+
+
+import React, { FC } from 'react';
+
 import { BookProps } from './component-interfaces/interfaces';
 
 
@@ -14,7 +26,7 @@ import { BookProps } from './component-interfaces/interfaces';
  * @returns a 'book' div with class of 'book' that displays
  * the book prop params
  */
-const Book:FC<BookProps> = (props) => {
+export const Book:FC<BookProps> = (props) => {
   return (
     <div className='book'>
       <ul>
@@ -27,5 +39,3 @@ const Book:FC<BookProps> = (props) => {
     </div>
   )
 }
-
-export default Book;

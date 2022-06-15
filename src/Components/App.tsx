@@ -1,9 +1,9 @@
 import React, { useState, FC } from 'react';
 
-import { Nav } from './Nav';
-import { Library } from './Library';
-import { AddButton } from './AddButton';
-import { Babo } from './Babo'; // temp
+import Nav from './Nav';
+import Library from './Library';
+import AddButton from './AddButton';
+import Babo from './Babo'; // temp
 
 import { LibraryProps, BookProps } from './component-interfaces/interfaces';
 

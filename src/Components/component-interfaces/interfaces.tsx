@@ -1,5 +1,5 @@
 /**
- * A book object to be rendered in a Book component
+ * A set of props to be rendered in a Book component
  */
 export interface BookProps {
     title: string;
@@ -10,7 +10,7 @@ export interface BookProps {
 }
 
 /**
- * This libraryArray is passed to the Library component, which displays
+ * Props: libraryArray is passed to the Library component, which displays
  * Book components as children
  */
 export interface LibraryProps {
