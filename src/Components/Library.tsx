@@ -17,7 +17,7 @@ const Library:FC<LibraryProps> = (props) => {
 
   return (
     <div className='library-wrapper'>
-      <h2>{props.libraryTitle}</h2>
+      <h2>{props.libraryTitle? props.libraryTitle : 'Library'}</h2>
       <div className='library-book-grid'>
         {libraryArray.map((thisBook: BookProps) =>
         <Book
