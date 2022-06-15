@@ -10,7 +10,7 @@ import { BookProps } from './component-interfaces/interfaces';
   * author: The author of the book
   * pageCount: The number of pages of the book
   * read: Whether the book has been read or not
-  * id: Number id of the book entry for... bookkeeping B)
+  * id: Number id of the book entry for... (key) bookkeeping B)
  * @returns a 'book' div with class of 'book' that displays
  * the book prop params
  */
@@ -22,7 +22,7 @@ const Book:FC<BookProps> = (props) => {
         <li><span>Author:</span> {props.author}</li>
         <li><span>Pages:</span> {props.pageCount}</li>
         <li><span>Read:</span> {props.read.toString()}</li>
-        <li><span>ID:</span> {props.id}</li> 
+        <li><span>Id:</span> {props.id}</li> 
       </ul>
       <button
         className='delete-button'

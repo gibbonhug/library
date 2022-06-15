@@ -23,7 +23,8 @@ const Library:FC<LibraryProps> = (props) => {
         author={thisBook.author}
         pageCount={thisBook.pageCount}
         read={thisBook.read}
-        id={thisBook.id} 
+        id={thisBook.id}
+        key={thisBook.id} 
       />
     )}
     </div>
