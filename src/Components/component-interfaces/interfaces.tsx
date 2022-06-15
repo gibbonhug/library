@@ -1,7 +1,19 @@
 /**
- * A set of props to be rendered in a Book component
+ * All props passed to Books
+ * includes BookInfo which is an obj,
+ * and handleDelete function
  */
+
 export interface BookProps {
+    bookInfo: BookInfo;
+    handleDelete: Function;
+}
+
+/**
+ * A set of props to be rendered in a Book component
+ * (title, author, etc; incl id)
+ */
+export interface BookInfo {
     title: string;
     author: string;
     pageCount: number;
@@ -17,6 +29,7 @@ export interface BookProps {
  * which is displayed as a header
  */
 export interface LibraryProps {
-    libraryArray: BookProps[];
+    libraryArray: BookInfo[];
     libraryTitle?: string;
+    handleDelete: Function;
 }

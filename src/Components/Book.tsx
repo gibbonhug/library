@@ -5,29 +5,28 @@ import { BookProps } from './component-interfaces/interfaces';
 
 /**
  * A 'book' entry
- * @param props: Book props:
-  * title: The title of the book
-  * author: The author of the book
-  * pageCount: The number of pages of the book
-  * read: Whether the book has been read or not
-  * id: Number id of the book entry for... (key) bookkeeping B)
+ * @param props: bookInfo props: an obj with various author, id, etc data
+ * handleDelete: function to delete this book from App state
  * @returns a 'book' div with class of 'book' that displays
- * the book prop params
+ * the bookInfo params
  */
 const Book:FC<BookProps> = (props) => {
+  const bookInfo = props.bookInfo;
+  const handleDelete = props.handleDelete;
+
   return (
     <div className='book'>
       <ul>
-        <li><span>Title:</span> {props.title}</li>
-        <li><span>Author:</span> {props.author}</li>
-        <li><span>Pages:</span> {props.pageCount}</li>
-        <li><span>Read:</span> {props.read.toString()}</li>
-        <li><span>Id:</span> {props.id}</li> 
+        <li><span>Title:</span> {bookInfo.title}</li>
+        <li><span>Author:</span> {bookInfo.author}</li>
+        <li><span>Pages:</span> {bookInfo.pageCount}</li>
+        <li><span>Read:</span> {bookInfo.read.toString()}</li>
+        <li><span>Id:</span> {bookInfo.id}</li> 
       </ul>
       <button
         className='delete-button'
         type='button'
-        onClick={() => console.log('you deleted me')}>
+        onClick={() => handleDelete(bookInfo.id)}>
           Delete
       </button>
     </div>

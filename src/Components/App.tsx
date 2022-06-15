@@ -5,7 +5,7 @@ import Library from './Library';
 import AddButton from './AddButton';
 import Babo from './Babo'; // temp
 
-import { LibraryProps, BookProps } from './component-interfaces/interfaces';
+import { BookInfo } from './component-interfaces/interfaces';
 
 
 /**
@@ -23,13 +23,22 @@ const App: FC = () => {
     { title: 'Jane Eyre', author: 'Charlotte Brontë', pageCount: 680, read: true, id: 3 }
   ]);
 
+  /**
+   * Clicking the 'delete' button in a book calls this function, removing it from
+   * the App's libraryArray state
+   * @param id The id of the book to delete (is in bookInfo obj in book props)
+   */
+  const handleDelete = (id: number) => {
+    console.log('hi');
+  }
+
   return (
     <div id='app-wrapper'>
       <Nav />
       <div id='app-meat'>
-        <Library libraryArray={libraryArray} libraryTitle={'All Books'} />
+        <Library libraryArray={libraryArray} libraryTitle={'All Books'} handleDelete={handleDelete} />
 
-        <Library libraryArray={libraryArray.filter((thisBook: BookProps) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} />
+        <Library libraryArray={libraryArray.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete}/>
 
         <AddButton />
         <Babo />
