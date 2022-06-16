@@ -33,11 +33,13 @@ const Book:FC<BookProps> = (props) => {
             Delete
         </button>
         <button
-          className='read-button'
+          className={bookInfo.read ? 
+            'unread-button toggle-read-button' : 
+            'read-button toggle-read-button'}
           type='button'
           onClick={() => handleRead(bookInfo.id)}
         >
-          Toggle Read Status
+          {bookInfo.read ? 'Unread (by magic)' : 'I\'ve read this!'}
         </button>
     </div>
     </div>
