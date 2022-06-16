@@ -8,11 +8,13 @@ import { BookProps } from './component-interfaces/interfaces';
  * @param props: bookInfo props: an obj with various author, id, etc data
  * handleDelete: function to delete this book from App state
  * @returns a 'book' div with class of 'book' that displays
- * the bookInfo params
+ * the bookInfo params in an ul. also div inside this with 2 buttons
+ * one button deletes book and other one toggles read status of book.
  */
 const Book:FC<BookProps> = (props) => {
   const bookInfo = props.bookInfo;
   const handleDelete = props.handleDelete;
+  const handleRead = props.handleRead;
 
   return (
     <div className='book'>
@@ -23,12 +25,21 @@ const Book:FC<BookProps> = (props) => {
         <li><span>Read:</span> {bookInfo.read.toString()}</li>
         <li><span>Id:</span> {bookInfo.id}</li> 
       </ul>
+    <div>
       <button
-        className='delete-button'
-        type='button'
-        onClick={() => handleDelete(bookInfo.id)}>
-          Delete
-      </button>
+          className='delete-button'
+          type='button'
+          onClick={() => handleDelete(bookInfo.id)}>
+            Delete
+        </button>
+        <button
+          className='read-button'
+          type='button'
+          onClick={() => handleRead(bookInfo.id)}
+        >
+          Toggle Read Status
+        </button>
+    </div>
     </div>
   )
 }

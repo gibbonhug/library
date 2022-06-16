@@ -1,12 +1,14 @@
 /**
  * All props passed to Books
  * includes BookInfo which is an obj,
- * and handleDelete function
+ * and handleDelete function,
+ * and handleRead function (toggle read status)
  */
 
 export interface BookProps {
     bookInfo: BookInfo;
     handleDelete: Function;
+    handleRead: Function;
 }
 
 /**
@@ -32,4 +34,5 @@ export interface LibraryProps {
     libraryArray: BookInfo[];
     libraryTitle?: string;
     handleDelete: Function;
+    handleRead: Function;
 }

@@ -25,6 +25,10 @@ const Library:FC<LibraryProps> = (props) => {
    * handleDelete: passing this down to Books to delete them up in App
    */
   const handleDelete = props.handleDelete;
+  /**
+   * handleRead: passing this down to Books to toggle their read status in App
+   */
+  const handleRead = props.handleRead;
 
   return (
     <div className='library-wrapper'>
@@ -33,8 +37,9 @@ const Library:FC<LibraryProps> = (props) => {
         {libraryArray.map((thisBook: BookInfo) =>
         <Book
           bookInfo={thisBook}
-          handleDelete={handleDelete}
           key={thisBook.id}
+          handleDelete={handleDelete}
+          handleRead={handleRead}
         />
       )}
       </div>
