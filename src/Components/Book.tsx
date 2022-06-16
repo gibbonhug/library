@@ -30,7 +30,7 @@ const Book:FC<BookProps> = (props) => {
           className='delete-button'
           type='button'
           onClick={() => handleDelete(bookInfo.id)}>
-            Delete
+            Delete Forever
         </button>
         <button
           className={bookInfo.read ? 
