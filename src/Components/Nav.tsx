@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 
 
 /**
- * A nav bar with id of 'nav'
+ * The ugly nav bar
+ *@returns A nav bar with id of 'nav'
  */
 const Nav:FC = () => {
   return (
