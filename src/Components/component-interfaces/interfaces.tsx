@@ -26,9 +26,11 @@ export interface BookInfo {
 /**
  * Props: libraryArray is passed to the Library component, which displays
  * Book components as children
- * 
+ * libraryArray: Array of BookInfo objs
  * libraryTitle: the title of this library ex. 'all books' or 'books i have read'
  * which is displayed as a header
+ * handleDelete: func to delete a book
+ * handleRead: functto toggle read/unread status
  */
 export interface LibraryProps {
     libraryArray: BookInfo[];
