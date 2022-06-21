@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { BookProps } from './component-interfaces/interfaces';
 
@@ -11,7 +11,7 @@ import { BookProps } from './component-interfaces/interfaces';
  * the bookInfo params in an ul. also div inside this with 2 buttons
  * one button deletes book and other one toggles read status of book.
  */
-const Book:FC<BookProps> = (props) => {
+const Book: React.FC<BookProps> = (props) => {
   const bookInfo = props.bookInfo;
   const handleDelete = props.handleDelete;
   const handleRead = props.handleRead;

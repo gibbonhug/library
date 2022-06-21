@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 
 /**
  * The ugly nav bar
  *@returns A nav bar with id of 'nav'
  */
-const Nav:FC = () => {
+const Nav: React.FC = () => {
   return (
     <div id='nav'>
       Please Excuse My Dnav Abar Swag

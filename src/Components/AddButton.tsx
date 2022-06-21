@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { useState } from 'react';
 
 
 /**
@@ -6,7 +6,7 @@ import React, { useState, FC } from 'react';
  * @returns a button that doesn't actually add a book (toggles between texts)
  * Button has id of 'add-button'
  */
-const AddButton:FC = () => {
+const AddButton: React.FC = () => {
   const [txt, setTxt] = useState('Add a book?');
 
   /**

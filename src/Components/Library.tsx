@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import Book from './Book';
 
@@ -16,7 +16,7 @@ import { LibraryProps, BookInfo } from './component-interfaces/interfaces';
  * inside is a h2 with the title, and a div with class of 'library-book-grid'
  * that is a CSS Grid of this library's books
  */
-const Library:FC<LibraryProps> = (props) => {
+const Library: React.FC<LibraryProps> = (props) => {
   /**
    * libraryArray: the array of books we are passing down to be displayed
    */

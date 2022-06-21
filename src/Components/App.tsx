@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Nav from './Nav';
 import Library from './Library';
@@ -14,10 +14,8 @@ import { BookInfo } from './component-interfaces/interfaces';
  * is nested inside a div of 'app-wrapper';
  * everything except the header nested inside a div of 'app-meat'
  */
-const App: FC = () => {
-  const [libraryArray, setLibraryArray] = useState([
-    {title: 'title', author: 'author', pageCount: 0, read: false, id: 0}
-  ]);
+const App: React.FC = () => {
+  const [libraryArray, setLibraryArray] = useState<[BookInfo]>({} as);
 
   /**
    * Clicking the 'delete' button in a book calls this function, removing it from
