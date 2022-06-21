@@ -16,11 +16,7 @@ import { BookInfo } from './component-interfaces/interfaces';
  */
 const App: FC = () => {
   const [libraryArray, setLibraryArray] = useState([
-    // initial books
-    { title: 'Anna Karenina', author: 'Leo Tolstoy', pageCount: 960, read: false, id: 0 },
-    { title: 'As I Lay Dying', author: 'William Faulkner', pageCount: 288, read: true, id: 1 },
-    { title: 'Gone with the Wind', author: 'Margaret Mitchell', pageCount: 1037, read: false, id: 2 },
-    { title: 'Jane Eyre', author: 'Charlotte Brontë', pageCount: 680, read: true, id: 3 }
+    {title: 'title', author: 'author', pageCount: 0, read: false, id: 0}
   ]);
 
   /**
@@ -51,7 +47,19 @@ const App: FC = () => {
     setLibraryArray(newLibraryArray);
   }
 
-  useEffect(() => console.log('youse effect'));
+  /**
+   * Runs once, retrieving book data from db.json in src/data
+   * Sets these books as the 'initial' books
+   */
+  useEffect(() => {
+    fetch('http://localhost:8000/books')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setLibraryArray(data);
+      })
+    }, []);
 
   return (
     <div id='app-wrapper'>

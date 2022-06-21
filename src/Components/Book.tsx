@@ -41,7 +41,7 @@ const Book:FC<BookProps> = (props) => {
         >
           {bookInfo.read ? 'Unread (by magic)' : 'I\'ve read this!'}
         </button>
-    </div>
+      </div>
     </div>
   )
 }
