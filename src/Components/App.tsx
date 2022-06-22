@@ -16,24 +16,15 @@ import { BookInfo } from './interfaces';
  */
 const App: React.FC = () => {
   /**
-   * For only rendering books when book data is fetched in useEffect
-   * Not sure of best practices for this but works for now (?)
-   */
-  const [loadingStatus, setLoadingStatus] = useState<boolean>(true);
-
-  /**
    * Books to be displayed in libraries
    * These are fetched in useEffect
+   * The default value is null which is before the data is fetched
    */
-  const [libraryArray, setLibraryArray] = useState<[BookInfo]>([
-    {title: 'loading data', author:'loading data', pageCount: 0, read: false, id: 0}
-  ]);
+  const [libraryArray, setLibraryArray] = useState<BookInfo[] | null>(null);
 
   /**
-   * Runs once, retrieving book data from db.json in src/data
+   * Runs once ([]), retrieving book data from db.json in src/data
    * Sets these books as the 'initial' books
-   * If they are fetched successfully the loadingStatus is switched to
-   * false which allows libraries to be rendered
    */
     useEffect(() => {
     fetch('http://localhost:8000/books')
@@ -41,7 +32,7 @@ const App: React.FC = () => {
         return res.json();
       })
       .then(data => {
-        setLoadingStatus(false);
+        // how do i type this? do I?
         setLibraryArray(data);
       })
     }, []);
@@ -52,7 +43,7 @@ const App: React.FC = () => {
    * @param id The id of the book to delete (is in bookInfo obj in book props)
    */
   const handleDelete = (id: number) => {
-    const newLibraryArray = libraryArray.filter(bookObj =>
+    const newLibraryArray = libraryArray!.filter(bookObj =>
       bookObj.id !== id);
     setLibraryArray(newLibraryArray);
   }
@@ -64,7 +55,7 @@ const App: React.FC = () => {
    */
   const handleRead = (id: number) => {
     // find the book whose index matches the id and toggle its read status
-    const newLibraryArray = libraryArray.map((bookObj) => {
+    const newLibraryArray = libraryArray!.map((bookObj) => {
       if (bookObj.id === id) {
         // only modify this book
         bookObj.read = !bookObj.read;
@@ -78,9 +69,9 @@ const App: React.FC = () => {
     <div id='app-wrapper'>
       <Nav />
       <div id='app-meat'>
-        {!loadingStatus && <Library libraryArray={libraryArray} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
+        {libraryArray && <Library libraryArray={libraryArray!} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
 
-        {!loadingStatus && <Library libraryArray={libraryArray.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />}
+        {libraryArray && <Library libraryArray={libraryArray!.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />}
 
         <AddButton />
 
