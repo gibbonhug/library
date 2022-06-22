@@ -29,27 +29,37 @@ const App: React.FC = () => {
    * Boolean to display a message there was an error retrieving data
    */
   const [isError, setIsError] = useState<boolean>(false);
-
+  /**
+   * For logging errors
+   * I am not sure how to type this
+   */
+  const [error, setError] = useState<Error | null>(null);
 
   /**
    * Runs once ([]), retrieving book data from db.json in src/data
    * Sets these books as the 'initial' books
+   * Will throw an error if cannot retrieve, which 
+   * will display an error div
    */
-    useEffect(() => {
-    fetch('http://localhost:8000/books')
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        // how do i type this? do I?
-        setLibraryArray(data);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        setIsLoading(false);
-        setIsError(true);
-      })
-    }, []);
+  useEffect(() => {
+  fetch('http://localhost:8000/books')
+    .then(res => {
+      if(!res.ok) {
+        throw Error('There was an error retrieving book data');
+      }
+      return res.json();
+    })
+    .then(data => {
+      // how do i type this? do I?
+      setLibraryArray(data);
+      setIsLoading(false);
+    })
+    .catch(err => {
+      setIsLoading(false); // bool for should remove loading div
+      setIsError(true); // bool for should display error div
+      setError(err); // logging
+    })
+  }, []);
 
   /**
    * Clicking the 'delete' button in a book calls this function, removing it from
@@ -83,10 +93,14 @@ const App: React.FC = () => {
     <div id='app-wrapper'>
       <Nav />
       <div id='app-meat'>
-        {isLoading && <div>Fetching data...</div>}
+        {isLoading && <div>
+          Fetching data...
+        </div>}
 
-        {isError && <div>There was an error</div>}
-
+        {isError && <div>
+          <p>There was an error retrieving your data:</p> 
+          <p>{error!.toString()}</p>
+        </div>}
 
         {libraryArray && <Library libraryArray={libraryArray!} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
 
