@@ -21,6 +21,15 @@ const App: React.FC = () => {
    * The default value is null which is before the data is fetched
    */
   const [libraryArray, setLibraryArray] = useState<BookInfo[] | null>(null);
+  /**
+   * Boolean to display a message if fetch is loading
+   */
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  /**
+   * Boolean to display a message there was an error retrieving data
+   */
+  const [isError, setIsError] = useState<boolean>(false);
+
 
   /**
    * Runs once ([]), retrieving book data from db.json in src/data
@@ -34,6 +43,11 @@ const App: React.FC = () => {
       .then(data => {
         // how do i type this? do I?
         setLibraryArray(data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        setIsLoading(false);
+        setIsError(true);
       })
     }, []);
 
@@ -69,6 +83,11 @@ const App: React.FC = () => {
     <div id='app-wrapper'>
       <Nav />
       <div id='app-meat'>
+        {isLoading && <div>Fetching data...</div>}
+
+        {isError && <div>There was an error</div>}
+
+
         {libraryArray && <Library libraryArray={libraryArray!} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
 
         {libraryArray && <Library libraryArray={libraryArray!.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />}
