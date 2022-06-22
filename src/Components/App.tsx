@@ -53,6 +53,8 @@ const App: React.FC = () => {
       // how do i type this? do I?
       setLibraryArray(data);
       setIsLoadingData(false);
+      setIsError(false);
+      setError(null);
     })
     .catch(err => {
       setIsLoadingData(false); // bool for should remove loading div
@@ -99,7 +101,7 @@ const App: React.FC = () => {
 
         {isError && <div>
           <p>There was an error retrieving your data:</p> 
-          <p>{error!.toString()}</p>
+          <p>{error!.message}</p>
         </div>}
 
         {libraryArray && <Library libraryArray={libraryArray!} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
