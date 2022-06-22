@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BookProps } from './component-interfaces/interfaces';
+import { BookProps } from './interfaces';
 
 
 /**

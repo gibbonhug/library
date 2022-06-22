@@ -2,7 +2,7 @@ import React from 'react';
 
 import Book from './Book';
 
-import { LibraryProps, BookInfo } from './component-interfaces/interfaces';
+import { LibraryProps, BookInfo } from './interfaces';
 
 
 /**

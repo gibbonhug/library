@@ -5,7 +5,7 @@ import Library from './Library';
 import AddButton from './AddButton';
 import Babo from './Babo'; // temp
 
-import { BookInfo } from './component-interfaces/interfaces';
+import { BookInfo } from './interfaces';
 
 
 /**
@@ -15,7 +15,36 @@ import { BookInfo } from './component-interfaces/interfaces';
  * everything except the header nested inside a div of 'app-meat'
  */
 const App: React.FC = () => {
-  const [libraryArray, setLibraryArray] = useState<[BookInfo]>({} as);
+  /**
+   * For only rendering books when book data is fetched in useEffect
+   * Not sure of best practices for this but works for now (?)
+   */
+  const [loadingStatus, setLoadingStatus] = useState<boolean>(true);
+
+  /**
+   * Books to be displayed in libraries
+   * These are fetched in useEffect
+   */
+  const [libraryArray, setLibraryArray] = useState<[BookInfo]>([
+    {title: 'loading data', author:'loading data', pageCount: 0, read: false, id: 0}
+  ]);
+
+  /**
+   * Runs once, retrieving book data from db.json in src/data
+   * Sets these books as the 'initial' books
+   * If they are fetched successfully the loadingStatus is switched to
+   * false which allows libraries to be rendered
+   */
+    useEffect(() => {
+    fetch('http://localhost:8000/books')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setLoadingStatus(false);
+        setLibraryArray(data);
+      })
+    }, []);
 
   /**
    * Clicking the 'delete' button in a book calls this function, removing it from
@@ -45,27 +74,13 @@ const App: React.FC = () => {
     setLibraryArray(newLibraryArray);
   }
 
-  /**
-   * Runs once, retrieving book data from db.json in src/data
-   * Sets these books as the 'initial' books
-   */
-  useEffect(() => {
-    fetch('http://localhost:8000/books')
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setLibraryArray(data);
-      })
-    }, []);
-
   return (
     <div id='app-wrapper'>
       <Nav />
       <div id='app-meat'>
-        <Library libraryArray={libraryArray} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />
+        {!loadingStatus && <Library libraryArray={libraryArray} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
 
-        <Library libraryArray={libraryArray.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />
+        {!loadingStatus && <Library libraryArray={libraryArray.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />}
 
         <AddButton />
 
