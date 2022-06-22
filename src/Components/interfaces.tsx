@@ -7,8 +7,8 @@
 
 export interface BookProps {
     bookInfo: BookInfo;
-    handleDelete: Function;
-    handleRead: Function;
+    handleDelete: (id: number) => void;
+    handleRead: (id: number) => void;
 }
 
 /**
@@ -35,6 +35,6 @@ export interface BookInfo {
 export interface LibraryProps {
     libraryArray: BookInfo[];
     libraryTitle?: string;
-    handleDelete: Function;
-    handleRead: Function;
+    handleDelete: (id: number) => void;
+    handleRead: (id: number) => void;
 }
