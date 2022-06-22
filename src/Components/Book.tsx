@@ -5,9 +5,11 @@ import { BookProps } from './interfaces';
 
 /**
  * A 'book' entry
- * @param props: bookInfo props: an obj with various author, id, etc data
- * handleDelete: function to delete this book from App state
- * @returns a 'book' div with class of 'book' that displays
+ * @param props: 
+ * - bookInfo: an obj with various author, id, etc data
+ * - handleDelete: function to delete this book from App state
+ * @returns 
+ * - a 'book' div with class of 'book' that displays
  * the bookInfo params in an ul. also div inside this with 2 buttons
  * one button deletes book and other one toggles read status of book.
  */

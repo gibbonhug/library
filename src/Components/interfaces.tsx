@@ -1,8 +1,8 @@
 /**
  * All props passed to Books
- * includes BookInfo which is an obj,
- * and handleDelete function,
- * and handleRead function (toggle read status)
+ * - BookInfo which is an obj,
+ * - handleDelete function: deletes a book from state
+ * - handleRead function (toggle read status)
  */
 
 export interface BookProps {
@@ -13,7 +13,11 @@ export interface BookProps {
 
 /**
  * A set of props to be rendered in a Book component
- * (title, author, etc; incl id)
+ * - title: title of the book
+ * - author: author of the book
+ * - pageCount: number of pages this book has
+ * - read: boolean whether this book is read or unread
+ * - id: data id of this book
  */
 export interface BookInfo {
     title: string;
@@ -24,13 +28,13 @@ export interface BookInfo {
 }
 
 /**
- * Props: libraryArray is passed to the Library component, which displays
+ * Props: LibraryProps is passed to the Library component, which displays
  * Book components as children
- * libraryArray: Array of BookInfo objs
- * libraryTitle: the title of this library ex. 'all books' or 'books i have read'
+ * - libraryArray: Array of BookInfo objs
+ * - libraryTitle: the title of this library ex. 'all books' or 'books i have read'
  * which is displayed as a header
- * handleDelete: func to delete a book
- * handleRead: functto toggle read/unread status
+ * - handleDelete: func to delete a book
+ * - handleRead: functto toggle read/unread status
  */
 export interface LibraryProps {
     libraryArray: BookInfo[];

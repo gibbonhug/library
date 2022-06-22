@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useFetchData from '../hooks/useFetchData';
 
 import Nav from './Nav';
 import Library from './Library';
@@ -15,25 +16,11 @@ import { BookInfo } from './interfaces';
  * everything except the header nested inside a div of 'app-meat'
  */
 const App: React.FC = () => {
-  /**
-   * Books to be displayed in libraries
-   * These are fetched in useEffect
-   * The default value is null which is before the data is fetched
-   */
-  const [libraryArray, setLibraryArray] = useState<BookInfo[] | null>(null);
-  /**
-   * Boolean to display a message if fetch is loading
-   */
-  const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
-  /**
-   * Boolean to display a message there was an error retrieving data
-   */
-  const [isError, setIsError] = useState<boolean>(false);
-  /**
-   * For logging errors
-   * I am not sure how to type this
-   */
-  const [error, setError] = useState<Error | null>(null);
+  const [ 
+    libraryArray, isLoadingData, error, isError 
+  ] = useFetchData(
+    'http://localhost:8000/books'
+  );
 
   /**
    * Runs once ([]), retrieving book data from db.json in src/data
@@ -41,27 +28,6 @@ const App: React.FC = () => {
    * Will throw an error if cannot retrieve, which 
    * will display an error div
    */
-  useEffect(() => {
-  fetch('http://localhost:8000/books')
-    .then(res => {
-      if(!res.ok) {
-        throw Error('There was an error retrieving book data');
-      }
-      return res.json();
-    })
-    .then(data => {
-      // how do i type this? do I?
-      setLibraryArray(data);
-      setIsLoadingData(false);
-      setIsError(false);
-      setError(null);
-    })
-    .catch(err => {
-      setIsLoadingData(false); // bool for should remove loading div
-      setIsError(true); // bool for should display error div
-      setError(err); // logging
-    })
-  }, []);
 
   /**
    * Clicking the 'delete' button in a book calls this function, removing it from

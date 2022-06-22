@@ -8,12 +8,14 @@ import { LibraryProps, BookInfo } from './interfaces';
 /**
  * A 'library' that displays books
  * @param props: 
- * libraryArray: an array of 'book' objects;
- * libraryTitle: the title of this library ex 'Books I've read';
- * handleDelete: passed to Book children to delete them from the App's state;
+ * - libraryArray: an array of 'book' objects;
+ * - libraryTitle: the title of this library ex 'Books I've read';
+ * - handleDelete: passed to Book children to delete them from the App's state;
 
- * @returns A wrapper div with class of 'library-wrapper'
- * inside is a h2 with the title, and a div with class of 'library-book-grid'
+ * @returns 
+ * - A wrapper div with class of 'library-wrapper'
+ * -- inside: is a h2 with the title
+ * -- also a div with class of 'library-book-grid'
  * that is a CSS Grid of this library's books
  */
 const Library: React.FC<LibraryProps> = (props) => {
