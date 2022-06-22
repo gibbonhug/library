@@ -24,7 +24,7 @@ const App: React.FC = () => {
   /**
    * Boolean to display a message if fetch is loading
    */
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   /**
    * Boolean to display a message there was an error retrieving data
    */
@@ -52,10 +52,10 @@ const App: React.FC = () => {
     .then(data => {
       // how do i type this? do I?
       setLibraryArray(data);
-      setIsLoading(false);
+      setIsLoadingData(false);
     })
     .catch(err => {
-      setIsLoading(false); // bool for should remove loading div
+      setIsLoadingData(false); // bool for should remove loading div
       setIsError(true); // bool for should display error div
       setError(err); // logging
     })
@@ -93,7 +93,7 @@ const App: React.FC = () => {
     <div id='app-wrapper'>
       <Nav />
       <div id='app-meat'>
-        {isLoading && <div>
+        {isLoadingData && <div>
           Fetching data...
         </div>}
 
