@@ -1,25 +1,24 @@
 import { useState, useEffect } from 'react';
 
 /**
- * Fetching 
+ * Fetching data 
  * @param url: URL of the JSON data to fetch
- * @returns An array with 4 entries:
- * - data: the fetched data
+ * @param DataType: type of data
+ * @returns An object to be destructured:
+ * - data: the fetched data (type of DataType 'param')
+ * - setData: setState for data
  * - isLoadingData: true if data has not been returned / no error
+ * - setIsLoadingData: setState for isLoadingData
  * - isError: true if data could not be fetched
+ * - setIsError: setState for isError
  * - error: The error for logging (of type Error)
+ * - setError: setState for setError
  */
-const useFetchData: ((url: string) => [
-    data: any | any[] | null, 
-    isLoadingData: boolean, 
-    error: Error | null,
-    isError: boolean
-]) = (url) => {
+function useFetchData<DataType>(url: string) {
     /**
      * The data to fetch
-     * Not sure how to type this
      */
-    const [data, setData] = useState<any | any[] | null>(null);
+    const [data, setData] = useState<DataType | null>(null);
     /**
      * Boolean to display a message if fetch is loading
      */
@@ -56,9 +55,10 @@ const useFetchData: ((url: string) => [
             })
     }, [url]);
 
-    return [
-        data, isLoadingData, error, isError
-    ]
+    return {
+        data, setData, isLoadingData, setIsLoadingData,
+        error, setError, isError, setIsError
+    }
 }
 
 export default useFetchData;

@@ -16,18 +16,13 @@ import { BookInfo } from './interfaces';
  * everything except the header nested inside a div of 'app-meat'
  */
 const App: React.FC = () => {
-  const [ 
-    libraryArray, isLoadingData, error, isError 
-  ] = useFetchData(
-    'http://localhost:8000/books'
-  );
-
   /**
-   * Runs once ([]), retrieving book data from db.json in src/data
-   * Sets these books as the 'initial' books
-   * Will throw an error if cannot retrieve, which 
-   * will display an error div
+   * Fetch the data of type BookInfo[]
    */
+  const {
+    data: libraryArray, setData: setLibraryArray,
+    isLoadingData, isError, error  
+  } = useFetchData<BookInfo[]>('http://localhost:8000/books');
 
   /**
    * Clicking the 'delete' button in a book calls this function, removing it from
