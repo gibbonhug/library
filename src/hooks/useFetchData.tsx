@@ -20,21 +20,24 @@ function useFetchData<DataType>(url: string) {
      */
     const [data, setData] = useState<DataType | null>(null);
     /**
-     * Boolean to display a message if fetch is loading
+     * Boolean if fetch is loading
      */
     const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
     /**
-     * Boolean to display a message there was an error retrieving data
+     * Boolean if there was an error retrieving data
      */
     const [isError, setIsError] = useState<boolean>(false);
     /**
      * For logging errors
-     * I am not sure how to type this
      */
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        fetch(url)
+        // we will abort fetch requests if user navigates away
+        const abortController = new AbortController();
+        const signal = abortController.signal;
+
+        fetch(url, { signal })
             .then(res => {
                 if(!res.ok) {
                     throw Error('There was an error retrieving data');
@@ -42,7 +45,6 @@ function useFetchData<DataType>(url: string) {
                 return res.json();
             })
             .then(data => {
-                // how do i type this? do I?
                 setData(data);
                 setIsLoadingData(false);
                 setIsError(false);
@@ -53,6 +55,10 @@ function useFetchData<DataType>(url: string) {
                 setIsError(true); 
                 setError(err);
             })
+        
+        return (() => {
+            console.log('hahah bfe')
+        })
     }, [url]);
 
     return {
