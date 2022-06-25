@@ -1,9 +1,9 @@
-#app-wrapper {
+#app-wrapper { // holds everything incl nav
     padding: 3rem;
     background-color: cadetblue;
 }
 
-#app-meat {
+#app-meat { // holds routed components
     padding: 3rem;
     background-color: mediumpurple;
     display: flex;

@@ -10,7 +10,7 @@
     justify-content: space-between; // left: title right: links
     align-items: center;
     #nav-links {
-        ul {
+        ul { // space out links
             display: flex;
             flex-direction: row;
             color: white;    
