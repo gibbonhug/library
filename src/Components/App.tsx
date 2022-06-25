@@ -3,11 +3,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Nav from './Nav';
 import Home from './Home';
-import Babo from './Babo'; // temp
-
+import Babo from './Babo'; // temp just to have routes
+import AddButton from './AddButton'; // temp just to have routes
 
 /**
- * The 'home page'
+ * The brain of the App
  * @returns A div containing all other components; everything 
  * is nested inside a div of 'app-wrapper';
  * everything except the header nested inside a div of 'app-meat'
@@ -24,6 +24,8 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
 
             <Route path="/babo" element={<Babo />} />
+
+            <Route path="/add" element={<AddButton />} />
 
           </Routes>
         </div>

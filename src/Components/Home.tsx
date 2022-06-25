@@ -8,7 +8,7 @@ import { BookInfo } from './interfaces';
 /**
  * The home component
  * Fetches book data with useFetchData
- * Renders conditional loading, error, or 2 library components
+ * @returns Conditional loading, error, or 2 library components
  * (All books and just read books)
  */
 const Home:React.FC = () => {
@@ -48,7 +48,6 @@ const Home:React.FC = () => {
     });
     setLibraryArray(newLibraryArray);
   }
-
 
   return (
     <>
