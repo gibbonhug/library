@@ -39,7 +39,7 @@ function useFetchData<DataType>(url: string) {
 
         fetch(url, { signal })
             .then(res => {
-                if(!res.ok) {
+                if (!res.ok) {
                     throw Error('There was an error retrieving data');
                 }
                 return res.json();
@@ -51,14 +51,19 @@ function useFetchData<DataType>(url: string) {
                 setError(null);
             })
             .catch(err => {
-                setIsLoadingData(false);
-                setIsError(true); 
-                setError(err);
-            })
-        
-        return (() => {
-            console.log('hahah bfe')
-        })
+                if (err.name === 'AbortError') {
+                    // do not update state of component
+                } else {
+                    setIsLoadingData(false);
+                    setIsError(true);
+                    setError(err);    
+                }
+            });
+
+        // cleanup function
+        return (() =>
+            abortController.abort()
+        );
     }, [url]);
 
     return {
