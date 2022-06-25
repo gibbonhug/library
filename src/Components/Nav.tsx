@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 /**
  * The ugly nav bar
@@ -15,8 +15,8 @@ const Nav: React.FC = () => {
       </div>
       <div className='right'>
         <ul>
-          <li>Home</li>
-          <li>Babo</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/babo">Babo</Link></li>
         </ul>
       </div>
     </div>
