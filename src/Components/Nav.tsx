@@ -8,9 +8,17 @@ import React from 'react';
 const Nav: React.FC = () => {
   return (
     <div id='nav'>
-      Please Excuse My Dnav Abar Swag
-      <br />
-      I can be two lines if I want.
+      <div className='left'>
+        Please Excuse My Dnav Abar Swag
+        <br />
+        I can be two lines if I want.
+      </div>
+      <div className='right'>
+        <ul>
+          <li>Home</li>
+          <li>Babo</li>
+        </ul>
+      </div>
     </div>
   )
 }

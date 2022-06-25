@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useFetchData from '../hooks/useFetchData';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Nav from './Nav';
 import Library from './Library';
@@ -18,10 +19,11 @@ import { BookInfo } from './interfaces';
 const App: React.FC = () => {
   /**
    * Fetch the data of type BookInfo[]
+   * isLoadingData will be true while it is being fetched
    */
   const {
     data: libraryArray, setData: setLibraryArray,
-    isLoadingData, isError, error  
+    isLoadingData, isError, error
   } = useFetchData<BookInfo[]>('http://localhost:8000/books');
 
   /**
@@ -35,6 +37,7 @@ const App: React.FC = () => {
     setLibraryArray(newLibraryArray);
   }
 
+  console.log('hi');
   /**
    * Clicking the 'Toggle read status' button in a book calls this, which toggles
    * the current read status. Leaves other books as-is
@@ -53,27 +56,37 @@ const App: React.FC = () => {
   }
 
   return (
-    <div id='app-wrapper'>
-      <Nav />
-      <div id='app-meat'>
-        {isLoadingData && <div>
-          Fetching data...
-        </div>}
+    <Router>
+      <div id='app-wrapper'>
+        <Nav />
+        <div id='app-meat'>
+          <Routes>
 
-        {isError && <div>
-          <p>There was an error retrieving your data:</p> 
-          <p>{error!.message}</p>
-        </div>}
+            <Route path="/">
+              {isLoadingData && <div>
+                Fetching data...
+              </div>}
 
-        {libraryArray && <Library libraryArray={libraryArray!} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
+              {isError && <div>
+                <p>There was an error retrieving your data:</p>
+                <p>{error!.message}</p>
+              </div>}
 
-        {libraryArray && <Library libraryArray={libraryArray!.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />}
+              {libraryArray && <Library libraryArray={libraryArray!} libraryTitle={'All Books'} handleDelete={handleDelete} handleRead={handleRead} />}
 
-        <AddButton />
+              {libraryArray && <Library libraryArray={libraryArray!.filter((thisBook: BookInfo) => thisBook.read === true)} libraryTitle={'Books I\'ve read'} handleDelete={handleDelete} handleRead={handleRead} />}
 
-        <Babo />
+              <AddButton />
+            </Route>
+
+            <Route path="/babo">
+              <Babo />
+            </Route>
+
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 
