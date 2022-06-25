@@ -1,13 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import useFetchData from '../hooks/useFetchData';
 
 import Nav from './Nav';
-import Library from './Library';
 import Home from './Home';
 import Babo from './Babo'; // temp
-
-import { BookInfo } from './interfaces';
 
 
 /**
