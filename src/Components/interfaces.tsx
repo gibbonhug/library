@@ -34,11 +34,29 @@ export interface BookInfo {
  * - libraryTitle: the title of this library ex. 'all books' or 'books i have read'
  * which is displayed as a header
  * - handleDelete: func to delete a book
- * - handleRead: functto toggle read/unread status
+ * - handleRead: func to toggle read/unread status
  */
 export interface LibraryProps {
     libraryArray: BookInfo[];
     libraryTitle?: string;
+    handleDelete: (id: number) => void;
+    handleRead: (id: number) => void;
+}
+
+/**
+ * Props:
+ * - isLoadingData: whether fetch request is still ongoing
+ * - isError: whether there was an error retrieving data
+ * - error: an error if it exists
+ * - libraryArray: data fetched to be passed down to libraries and books
+ * - handleDelete: func to delete a book
+ * - handleRead: functto toggle read/unread status
+ */
+export interface HomeProps {
+    isLoadingData: boolean;
+    isError: boolean;
+    error: Error | null;
+    libraryArray: BookInfo[];
     handleDelete: (id: number) => void;
     handleRead: (id: number) => void;
 }
