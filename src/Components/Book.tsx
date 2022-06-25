@@ -25,18 +25,18 @@ const Book: React.FC<BookProps> = (props) => {
         <li><span>Author:</span> {bookInfo.author}</li>
         <li><span>Pages:</span> {bookInfo.pageCount}</li>
         <li><span>Read:</span> {bookInfo.read.toString()}</li>
-        <li><span>Id:</span> {bookInfo.id}</li> 
+        <li><span>Id:</span> {bookInfo.id}</li>
       </ul>
-    <div>
-      <button
+      <div>
+        <button
           className='delete-button'
           type='button'
           onClick={() => handleDelete(bookInfo.id)}>
-            Delete Forever
+          Delete Forever
         </button>
         <button
-          className={bookInfo.read ? 
-            'unread-button toggle-read-button' : 
+          className={bookInfo.read ?
+            'unread-button toggle-read-button' :
             'read-button toggle-read-button'}
           type='button'
           onClick={() => handleRead(bookInfo.id)}
