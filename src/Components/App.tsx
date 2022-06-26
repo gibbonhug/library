@@ -6,7 +6,6 @@ import Nav from './Nav';
 import Home from './Home';
 import Babo from './Babo'; // temp just to have routes
 import AddButton from './AddButton'; // temp just to have routes
-import Library from './Library';
 
 import { BookInfo } from './interfaces';
 
