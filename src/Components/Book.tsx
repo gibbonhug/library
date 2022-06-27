@@ -36,7 +36,7 @@ const Book: React.FC<BookProps> = (props) => {
                     <span>Id:</span> {bookInfo.id}
                 </li>
                 <li>
-                    <span>Link:</span> <a href={'/book/' + bookInfo.id}>{bookInfo.title}</a>
+                    <span>Library Link:</span> <a href={'/book/' + bookInfo.id}>{bookInfo.title}</a>
                 </li>
             </ul>
             <div>
