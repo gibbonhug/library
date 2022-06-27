@@ -10,41 +10,46 @@ import { BookInfo, HomeProps } from './interfaces';
  * @returns Conditional loading, error, or 2 library components
  * (All books and just read books)
  */
-const Home:React.FC<HomeProps> = (props) => {
-  const isLoadingData = props.isLoadingData;
-  const isError = props.isError;
-  const error = props.error;
-  const libraryArray = props.libraryArray;
-  const handleDelete = props.handleDelete;
-  const handleRead = props.handleRead;
+const Home: React.FC<HomeProps> = (props) => {
+    const isLoadingData = props.isLoadingData;
+    const isError = props.isError;
+    const error = props.error;
+    const libraryArray = props.libraryArray;
+    const handleDelete = props.handleDelete;
+    const handleRead = props.handleRead;
 
-  return (
-    <>
-      {isLoadingData && <div>
-        Fetching data...
-      </div>}
+    return (
+        <>
+            {isLoadingData && <div>Fetching data...</div>}
 
-      {isError && <div>
-        <p>There was an error retrieving your data:</p>
-        <p>{error!.message}</p>
-      </div>}
+            {isError && (
+                <div>
+                    <p>There was an error retrieving your data:</p>
+                    <p>{error!.message}</p>
+                </div>
+            )}
 
-      {libraryArray && <Library
-        libraryArray={libraryArray!}
-        libraryTitle={'All Books'}
-        handleDelete={handleDelete}
-        handleRead={handleRead}
-      />}
+            {libraryArray && (
+                <Library
+                    libraryArray={libraryArray!}
+                    libraryTitle={'All Books'}
+                    handleDelete={handleDelete}
+                    handleRead={handleRead}
+                />
+            )}
 
-      {libraryArray && <Library
-        libraryArray={libraryArray!.filter((thisBook: BookInfo) =>
-          thisBook.read === true)}
-        libraryTitle={'Books I\'ve read'}
-        handleDelete={handleDelete}
-        handleRead={handleRead}
-      />}
-    </>
-  )
-}
+            {libraryArray && (
+                <Library
+                    libraryArray={libraryArray!.filter(
+                        (thisBook: BookInfo) => thisBook.read === true
+                    )}
+                    libraryTitle={"Books I've read"}
+                    handleDelete={handleDelete}
+                    handleRead={handleRead}
+                />
+            )}
+        </>
+    );
+};
 
 export default Home;

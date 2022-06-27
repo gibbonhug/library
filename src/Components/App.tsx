@@ -12,82 +12,97 @@ import { BookInfo } from './interfaces';
 
 /**
  * The brain of the App
- * @returns A div containing all other components; everything 
+ * @returns A div containing all other components; everything
  * is nested inside a div of 'app-wrapper';
  * everything except the header nested inside a div of 'app-meat'
  */
 const App: React.FC = () => {
-  /**
-   * Fetch the data of type BookInfo[]
-   * isLoadingData will be true while it is being fetched
-   */
-  const {
-    data: libraryArray, setData: setLibraryArray,
-    isLoadingData, isError, error
-  } = useFetchData<BookInfo[]>('http://localhost:8000/books');
+    /**
+     * Fetch the data of type BookInfo[]
+     * isLoadingData will be true while it is being fetched
+     */
+    const {
+        data: libraryArray,
+        setData: setLibraryArray,
+        isLoadingData,
+        isError,
+        error,
+    } = useFetchData<BookInfo[]>('http://localhost:8000/books');
 
-  /**
-   * Clicking the 'delete' button in a book calls this function, removing it from
-   * the App's libraryArray state
-   * @param id The id of the book to delete (is in bookInfo obj in book props)
-   */
-  const handleDelete = (id: number) => {
-    const newLibraryArray = libraryArray!.filter(bookObj =>
-      bookObj.id !== id);
-    setLibraryArray(newLibraryArray);
-  }
+    /**
+     * Clicking the 'delete' button in a book calls this function, removing it from
+     * the App's libraryArray state
+     * @param id The id of the book to delete (is in bookInfo obj in book props)
+     */
+    const handleDelete = (id: number) => {
+        const newLibraryArray = libraryArray!.filter(
+            (bookObj) => bookObj.id !== id
+        );
+        setLibraryArray(newLibraryArray);
+    };
 
-  /**
-   * Clicking the 'Toggle read status' button in a book calls this, which toggles
-   * the current read status. Leaves other books as-is
-   * @param id The id of the book to delete (is in bookInfo obj in book props)
-   */
-  const handleRead = (id: number) => {
-    // find the book whose index matches the id and toggle its read status
-    const newLibraryArray = libraryArray!.map((bookObj) => {
-      if (bookObj.id === id) {
-        // only modify this book
-        bookObj.read = !bookObj.read;
-      }
-      return bookObj; // return all books
-    });
-    setLibraryArray(newLibraryArray);
-  }
+    /**
+     * Clicking the 'Toggle read status' button in a book calls this, which toggles
+     * the current read status. Leaves other books as-is
+     * @param id The id of the book to delete (is in bookInfo obj in book props)
+     */
+    const handleRead = (id: number) => {
+        // find the book whose index matches the id and toggle its read status
+        const newLibraryArray = libraryArray!.map((bookObj) => {
+            if (bookObj.id === id) {
+                // only modify this book
+                bookObj.read = !bookObj.read;
+            }
+            return bookObj; // return all books
+        });
+        setLibraryArray(newLibraryArray);
+    };
 
-  return (
-    <BrowserRouter>
-      <div id='app-wrapper'>
-        <Nav />
-        <div id='app-meat'>
-          <Routes>
+    return (
+        <BrowserRouter>
+            <div id='app-wrapper'>
+                <Nav />
+                <div id='app-meat'>
+                    <Routes>
 
-            <Route path="/" element={<Home
-              libraryArray={libraryArray!}
-              isLoadingData={isLoadingData}
-              isError={isError}
-              error={error}
-              handleDelete={handleDelete}
-              handleRead={handleRead}
-            />} />
+                        <Route
+                            path=''
+                            element={
+                                <Home
+                                    libraryArray={libraryArray!}
+                                    isLoadingData={isLoadingData}
+                                    isError={isError}
+                                    error={error}
+                                    handleDelete={handleDelete}
+                                    handleRead={handleRead}
+                                />
+                            }
+                        />
 
-            <Route path="/babo" element={<Babo />} />
+                        <Route path='babo' element={<Babo />} />
 
-            <Route path="/add" element={<AddButton />} />
+                        <Route path='add' element={<AddButton />} />
 
-            <Route path="/book" element={<LibraryPage
-              libraryArray={libraryArray!}
-              isLoadingData={isLoadingData}
-              isError={isError}
-              error={error}
-              handleDelete={handleDelete}
-              handleRead={handleRead}
-            />} />
-
-          </Routes>
-        </div>
-      </div>
-    </BrowserRouter>
-  )
-}
+                        <Route path='book'>
+                            <Route
+                                path=':bookIdParam'
+                                element={
+                                    <LibraryPage
+                                        libraryArray={libraryArray!}
+                                        isLoadingData={isLoadingData}
+                                        isError={isError}
+                                        error={error}
+                                        handleDelete={handleDelete}
+                                        handleRead={handleRead}
+                                    />
+                                }
+                            />
+                        </Route>
+                    </Routes>
+                </div>
+            </div>
+        </BrowserRouter>
+    );
+};
 
 export default App;
