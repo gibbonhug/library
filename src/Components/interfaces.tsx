@@ -44,6 +44,7 @@ export interface LibraryProps {
 }
 
 /**
+ * This is used for both Home and LibraryPage
  * Props:
  * - isLoadingData: whether fetch request is still ongoing
  * - isError: whether there was an error retrieving data

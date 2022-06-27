@@ -6,6 +6,7 @@ import Nav from './Nav';
 import Home from './Home';
 import Babo from './Babo'; // temp just to have routes
 import AddButton from './AddButton'; // temp just to have routes
+import LibraryPage from './LibraryPage'; // temp just to have routes
 
 import { BookInfo } from './interfaces';
 
@@ -66,13 +67,22 @@ const App: React.FC = () => {
               isError={isError}
               error={error}
               handleDelete={handleDelete}
-              handleRead={handleRead}      
+              handleRead={handleRead}
             />} />
 
             <Route path="/babo" element={<Babo />} />
 
             <Route path="/add" element={<AddButton />} />
-            
+
+            <Route path="/book" element={<LibraryPage
+              libraryArray={libraryArray!}
+              isLoadingData={isLoadingData}
+              isError={isError}
+              error={error}
+              handleDelete={handleDelete}
+              handleRead={handleRead}
+            />} />
+
           </Routes>
         </div>
       </div>
