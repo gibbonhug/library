@@ -15,13 +15,10 @@ import { HomeProps, BookInfo } from './interfaces';
  */
 const LibraryPage: React.FC<HomeProps> = (props) => {
     const { bookIdParam } = useParams(); // taken from the route
-    console.log(bookIdParam);
-    console.log('param' + bookIdParam);
     // take the number from the string route param
     let bookId: number | null = null;
     if (bookIdParam) {
         bookId = parseInt(bookIdParam);
-        console.log('id: ' + bookIdParam);
     }
 
     const isLoadingData = props.isLoadingData;
