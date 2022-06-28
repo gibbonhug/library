@@ -1,9 +1,12 @@
-.form-wrapper {
+.add-form-wrapper {
     .add-form {
         color: firebrick;
         background-color: floralwhite;
-        .form-section {
+        .add-form-section {
             margin: 1rem;
+        }
+        .add-form-submit {
+            font-size: larger;
         }
     }
 }

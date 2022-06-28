@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 
-import AddButton from './AddButton';
-
 /**
  * Form to put new books
- * @returns A div with classes of 'form-wrapper' and 'content-wrapper'
+ * @returns A div with classes of 'add-form-wrapper' and 'content-wrapper'
  * Has a h2 and a child div form for new data with class of 'add-form'
- * each label/input pair is in a div with class of 'form-section'
- * Also has a subcomponent of AddButton for now, might just move inside
+ * each label/input pair is in a div with class of 'add-form-section'
+ * Also has a submit button with class of 'add-form-submit'
  */
 
 const AddForm: React.FC = () => {
@@ -21,7 +19,7 @@ const AddForm: React.FC = () => {
     };
 
     return (
-        <div className='form-wrapper content-wrapper'>
+        <div className='add-form-wrapper content-wrapper'>
             <h2>Add A Book</h2>
             <form
                 className='add-form'
@@ -29,7 +27,7 @@ const AddForm: React.FC = () => {
                     handleSubmit(evt);
                 }}
             >
-                <div className='form-section'>
+                <div className='add-form-section'>
                     <label>Book Title:</label>
                     <input
                         type='text'
@@ -38,7 +36,7 @@ const AddForm: React.FC = () => {
                         onChange={(evt) => setTitle(evt.target.value)}
                     ></input>
                 </div>
-                <div className='form-section'>
+                <div className='add-form-section'>
                     <label>Author:</label>
                     <input
                         type='text'
@@ -47,7 +45,7 @@ const AddForm: React.FC = () => {
                         onChange={(evt) => setAuthor(evt.target.value)}
                     ></input>
                 </div>
-                <div className='form-section'>
+                <div className='add-form-section'>
                     <label>Page Count:</label>
                     <input
                         type='number'
@@ -59,7 +57,7 @@ const AddForm: React.FC = () => {
                         }
                     ></input>
                 </div>
-                <div className='form-section'>
+                <div className='add-form-section'>
                     <label>Read?:</label>
                     <input
                         type='checkbox'
@@ -70,8 +68,8 @@ const AddForm: React.FC = () => {
                         }} // TypeScript throws a fit if not done long way
                     ></input>
                 </div>
+                <button className='add-form-submit'>Add Book</button>
             </form>
-            <AddButton />
         </div>
     );
 };
