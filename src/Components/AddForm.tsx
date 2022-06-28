@@ -13,9 +13,8 @@ import AddButton from './AddButton';
 const AddForm: React.FC = () => {
     const [title, setTitle] = useState<string>('');
     const [author, setAuthor] = useState<string>('');
-    const [pageCount, setPageCount] = useState<number>(0);
+    const [pageCount, setPageCount] = useState<number>(1); // 0 pages not allowed
     const [readStatus, setReadStatus] = useState<boolean>(false);
-
 
     return (
         <div className='form-wrapper content-wrapper'>
@@ -23,15 +22,36 @@ const AddForm: React.FC = () => {
             <form className='add-form'>
                 <div className='form-section'>
                     <label>Book Title:</label>
-                    <input type='text' required></input>
+                    <input
+                        type='text'
+                        required
+                        value={title}
+                        onChange={(evt) => setTitle(evt.target.value)}
+                    ></input>
                 </div>
                 <div className='form-section'>
                     <label>Author:</label>
-                    <input type='text' required></input>
+                    <input
+                        type='text'
+                        required
+                        value={author}
+                        onChange={(evt) => setAuthor(evt.target.value)}
+                    ></input>
                 </div>
                 <div className='form-section'>
                     <label>Page Count:</label>
-                    <input type='number' required></input>
+                    <input
+                        type='number'
+                        min='1'
+                        required
+                        value={pageCount}
+                        onChange={(evt) =>{
+
+                            setPageCount(evt.target.valueAsNumber);
+                            console.log(`you changed me to ${pageCount}`);
+                        }
+                        }
+                    ></input>
                 </div>
                 <div className='form-section'>
                     <label>Read?:</label>
