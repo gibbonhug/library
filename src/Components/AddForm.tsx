@@ -16,10 +16,19 @@ const AddForm: React.FC = () => {
     const [pageCount, setPageCount] = useState<number>(1); // 0 pages not allowed
     const [readStatus, setReadStatus] = useState<boolean>(false);
 
+    const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+        console.log(evt);
+    };
+
     return (
         <div className='form-wrapper content-wrapper'>
             <h2>Add A Book</h2>
-            <form className='add-form'>
+            <form
+                className='add-form'
+                onSubmit={(evt) => {
+                    handleSubmit(evt);
+                }}
+            >
                 <div className='form-section'>
                     <label>Book Title:</label>
                     <input
