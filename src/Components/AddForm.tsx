@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import AddButton from './AddButton';
 
@@ -11,6 +11,12 @@ import AddButton from './AddButton';
  */
 
 const AddForm: React.FC = () => {
+    const [title, setTitle] = useState<string>('');
+    const [author, setAuthor] = useState<string>('');
+    const [pageCount, setPageCount] = useState<number>(0);
+    const [readStatus, setReadStatus] = useState<boolean>(false);
+
+
     return (
         <div className='form-wrapper content-wrapper'>
             <h2>Add A Book</h2>
