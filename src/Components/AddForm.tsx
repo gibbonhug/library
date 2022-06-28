@@ -52,7 +52,14 @@ const AddForm: React.FC = () => {
                 </div>
                 <div className='form-section'>
                     <label>Read?:</label>
-                    <input type='checkbox' required></input>
+                    <input
+                        type='checkbox'
+                        required
+                        onClick={(evt) => {
+                            const target = evt.target as HTMLInputElement;
+                            setReadStatus(target.checked);
+                        }} // TypeScript throws a fit if not done long way
+                    ></input>
                 </div>
             </form>
             <AddButton />
