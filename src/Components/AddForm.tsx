@@ -24,6 +24,7 @@ const AddForm: React.FC = () => {
             <form
                 className='add-form'
                 onSubmit={(evt) => {
+                    evt.preventDefault();
                     handleSubmit(evt);
                 }}
             >
@@ -61,7 +62,6 @@ const AddForm: React.FC = () => {
                     <label>Read?:</label>
                     <input
                         type='checkbox'
-                        required
                         onClick={(evt) => {
                             const target = evt.target as HTMLInputElement;
                             setReadStatus(target.checked);
