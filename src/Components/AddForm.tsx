@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { BookInfo } from './interfaces';
+
 /**
  * Form to put new books
  * @returns A div with classes of 'add-form-wrapper' and 'content-wrapper'
@@ -12,11 +14,19 @@ const AddForm: React.FC = () => {
     const [title, setTitle] = useState<string>('');
     const [author, setAuthor] = useState<string>('');
     const [pageCount, setPageCount] = useState<number>(1); // 0 pages not allowed
-    const [readStatus, setReadStatus] = useState<boolean>(false);
+    const [read, setRead] = useState<boolean>(false);
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-        evt.preventDefault();
-        console.log(evt);
+        evt.preventDefault(); // no reload etc
+        const bookToAdd = { title, author, pageCount, read } // POST will add id to complete BookInfo
+
+        fetch('http://localhost:8000/books', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookToAdd)
+        }).then(() => {
+            console.log('todo')
+        })
     };
 
     return (
@@ -64,7 +74,7 @@ const AddForm: React.FC = () => {
                         type='checkbox'
                         onClick={(evt) => {
                             const target = evt.target as HTMLInputElement;
-                            setReadStatus(target.checked);
+                            setRead(target.checked);
                         }} // TypeScript throws a fit if not done long way
                     ></input>
                 </div>
