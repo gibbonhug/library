@@ -15,6 +15,7 @@ const AddForm: React.FC = () => {
     const [readStatus, setReadStatus] = useState<boolean>(false);
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+        evt.preventDefault();
         console.log(evt);
     };
 
@@ -24,7 +25,6 @@ const AddForm: React.FC = () => {
             <form
                 className='add-form'
                 onSubmit={(evt) => {
-                    evt.preventDefault();
                     handleSubmit(evt);
                 }}
             >
