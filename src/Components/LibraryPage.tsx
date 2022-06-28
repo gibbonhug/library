@@ -6,7 +6,7 @@ import Library from './Library';
 import { HomeProps, BookInfo } from './interfaces';
 
 /**
- * This is similar to the home component and has same Prop type
+ * This is similar to the Home component and has same Prop type
  * However it only displays one book (whose id is passed as bookIdParam)
  * This is not just a 'library' component because we are passing down
  * isLoadingData, etc

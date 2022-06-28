@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './Nav';
 import Home from './Home';
 import Babo from './Babo'; // temp just to have routes
-import AddButton from './AddButton'; // temp just to have routes
-import LibraryPage from './LibraryPage'; // temp just to have routes
+import AddForm from './AddButton'; // temp just to have routes
+import LibraryPage from './LibraryPage';
 
 import { BookInfo } from './interfaces';
 
@@ -81,7 +81,7 @@ const App: React.FC = () => {
 
                         <Route path='babo' element={<Babo />} />
 
-                        <Route path='add' element={<AddButton />} />
+                        <Route path='add' element={<AddForm />} />
 
                         <Route path='book'>
                             <Route
