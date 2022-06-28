@@ -45,12 +45,9 @@ const AddForm: React.FC = () => {
                         min='1'
                         required
                         value={pageCount}
-                        onChange={(evt) =>{
-
-                            setPageCount(evt.target.valueAsNumber);
-                            console.log(`you changed me to ${pageCount}`);
-                        }
-                        }
+                        onChange={(evt) => {
+                            setPageCount(parseInt(evt.target.value));
+                        }}
                     ></input>
                 </div>
                 <div className='form-section'>
