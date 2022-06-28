@@ -12,6 +12,7 @@ import { HomeProps, BookInfo } from './interfaces';
  * isLoadingData, etc
  * Fetches book data with useFetchData
  * @returns Conditional loading, error, or a library component
+ * All in a div with className of 'content-wrapper'
  */
 const LibraryPage: React.FC<HomeProps> = (props) => {
     const { bookIdParam } = useParams(); // taken from the route
@@ -41,7 +42,7 @@ const LibraryPage: React.FC<HomeProps> = (props) => {
     }
 
     return (
-        <>
+        <div className='content-wrapper'>
             {isLoadingData && <div>Fetching data...</div>}
 
             {isError && (
@@ -65,7 +66,7 @@ const LibraryPage: React.FC<HomeProps> = (props) => {
                     handleRead={handleRead}
                 />
             )}
-        </>
+        </div>
     );
 };
 

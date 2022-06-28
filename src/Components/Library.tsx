@@ -12,7 +12,7 @@ import { LibraryProps, BookInfo } from './interfaces';
  * - handleDelete: passed to Book children to delete them from the App's state;
 
  * @returns 
- * - A wrapper div with class of 'library-wrapper'
+ * - A wrapper div with classes of 'library-wrapper'
  * -- inside: is a h2 with the title
  * -- also a div with class of 'library-book-grid'
  * that is a CSS Grid of this library's books

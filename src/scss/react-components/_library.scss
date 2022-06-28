@@ -1,13 +1,7 @@
-.library-wrapper {
-    h2 {
-        font-size: large;
-        font-weight: 900;
-    }
-    .library-book-grid {
-        background-color: lavender;
-        padding: 3rem;
-        display: grid; // books displayed in a grid
-        gap: 1rem;
-        grid-template-columns: 1fr 1fr;
-    }
+.library-book-grid {
+    background-color: lavender;
+    padding: 3rem;
+    display: grid; // books displayed in a grid
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
 }

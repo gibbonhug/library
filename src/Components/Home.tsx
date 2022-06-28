@@ -9,6 +9,7 @@ import { BookInfo, HomeProps } from './interfaces';
  * Fetches book data with useFetchData
  * @returns Conditional loading, error, or 2 library components
  * (All books and just read books)
+ * All in a div with className of 'content-wrapper'
  */
 const Home: React.FC<HomeProps> = (props) => {
     const isLoadingData = props.isLoadingData;
@@ -19,7 +20,7 @@ const Home: React.FC<HomeProps> = (props) => {
     const handleRead = props.handleRead;
 
     return (
-        <>
+        <div className='content-wrapper'>
             {isLoadingData && <div>Fetching data...</div>}
 
             {isError && (
@@ -48,7 +49,7 @@ const Home: React.FC<HomeProps> = (props) => {
                     handleRead={handleRead}
                 />
             )}
-        </>
+        </div>
     );
 };
 
