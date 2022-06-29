@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import { BookInfo } from './interfaces';
 
 /**
  * Form to put new books
@@ -11,22 +10,42 @@ import { BookInfo } from './interfaces';
  */
 
 const AddForm: React.FC = () => {
+    /**
+     * The title of the book to add: text input
+     */
     const [title, setTitle] = useState<string>('');
+    /**
+     * The author of the book to add: text input
+     */
     const [author, setAuthor] = useState<string>('');
+    /**
+     * The page count of the book to add: number input
+     * Min value of 1
+     */
     const [pageCount, setPageCount] = useState<number>(1); // 0 pages not allowed
+    /**
+     * The read status of the book to add: checkbox input
+     */
     const [read, setRead] = useState<boolean>(false);
+
+    /**
+     * Is post request awaiting response? Toggled disabled submit button
+     * and the text in this button
+     */
+    const [isPending, setIsPending] = useState<boolean>(false);
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault(); // no reload etc
-        const bookToAdd = { title, author, pageCount, read } // POST will add id to complete BookInfo
+        setIsPending(true); // we are awaiting resolution
+        const bookToAdd = { title, author, pageCount, read }; // POST will add id to complete BookInfo set of data
 
         fetch('http://localhost:8000/books', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bookToAdd)
+            body: JSON.stringify(bookToAdd),
         }).then(() => {
-            console.log('todo')
-        })
+            setIsPending(false);
+        });
     };
 
     return (
@@ -78,7 +97,12 @@ const AddForm: React.FC = () => {
                         }} // TypeScript throws a fit if not done long way
                     ></input>
                 </div>
-                <button className='add-form-submit'>Add Book</button>
+                {!isPending && (
+                    <button className='add-form-submit'>Add Book</button>
+                )}
+                {isPending && (
+                    <button className='add-form-submit' disabled>Adding Your Book...</button>
+                )}
             </form>
         </div>
     );
