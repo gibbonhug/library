@@ -27,41 +27,6 @@
       "pageCount": 680,
       "read": true,
       "id": 3
-    },
-    {
-      "title": "Test Book",
-      "author": "Test Author",
-      "pageCount": 1,
-      "read": true,
-      "id": 4
-    },
-    {
-      "title": "Book",
-      "author": "Name",
-      "pageCount": 1,
-      "read": false,
-      "id": 5
-    },
-    {
-      "title": "Huh",
-      "author": "Huh",
-      "pageCount": 1,
-      "read": false,
-      "id": 6
-    },
-    {
-      "title": "test",
-      "author": "test",
-      "pageCount": 1,
-      "read": true,
-      "id": 7
-    },
-    {
-      "title": "Debuggy",
-      "author": "Debuggy",
-      "pageCount": 1,
-      "read": false,
-      "id": 8
     }
   ]
 }
