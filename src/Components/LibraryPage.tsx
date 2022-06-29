@@ -1,9 +1,10 @@
 import React from 'react';
+import useFetchData from '../hooks/useFetchData';
 import { useParams } from 'react-router-dom';
 
 import Library from './Library';
 
-import { HomeProps, BookInfo } from './interfaces';
+import { BookInfo } from './interfaces';
 
 /**
  * This is similar to the Home component and has same Prop type
@@ -14,20 +15,53 @@ import { HomeProps, BookInfo } from './interfaces';
  * @returns Conditional loading, error, or a library component
  * All in a div with className of 'content-wrapper'
  */
-const LibraryPage: React.FC<HomeProps> = (props) => {
+const LibraryPage: React.FC = () => {
+    /**
+     * Fetch the data of type BookInfo[]
+     * isLoadingData will be true while it is being fetched
+     */
+    const {
+        data: libraryArray,
+        setData: setLibraryArray,
+        isLoadingData,
+        isError,
+        error,
+    } = useFetchData<BookInfo[]>('http://localhost:8000/books');
+
+    /**
+     * Clicking the 'delete' button in a book calls this function, removing it from
+     * the App's libraryArray state
+     * @param id The id of the book to delete (is in bookInfo obj in book props)
+     */
+    const handleDelete = (id: number) => {
+        const newLibraryArray = libraryArray!.filter(
+            (bookObj) => bookObj.id !== id
+        );
+        setLibraryArray(newLibraryArray);
+    };
+
+    /**
+     * Clicking the 'Toggle read status' button in a book calls this, which toggles
+     * the current read status. Leaves other books as-is
+     * @param id The id of the book to delete (is in bookInfo obj in book props)
+     */
+    const handleRead = (id: number) => {
+        // find the book whose index matches the id and toggle its read status
+        const newLibraryArray = libraryArray!.map((bookObj) => {
+            if (bookObj.id === id) {
+                // only modify this book
+                bookObj.read = !bookObj.read;
+            }
+            return bookObj; // return all books
+        });
+        setLibraryArray(newLibraryArray);
+    };
+
     const { bookIdParam } = useParams(); // taken from the route
-    // take the number from the string route param
     let bookId: number | null = null;
     if (bookIdParam) {
         bookId = parseInt(bookIdParam);
     }
-
-    const isLoadingData = props.isLoadingData;
-    const isError = props.isError;
-    const error = props.error;
-    const libraryArray = props.libraryArray;
-    const handleDelete = props.handleDelete;
-    const handleRead = props.handleRead;
 
     let thisBook: BookInfo | null = null;
     // retrieve the 1 book from the array from the route param

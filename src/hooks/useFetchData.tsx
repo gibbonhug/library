@@ -36,6 +36,7 @@ function useFetchData<DataType>(url: string) {
         // we will abort fetch requests if user navigates away
         const abortController = new AbortController();
         const signal = abortController.signal;
+        console.log('use usffect fetch cdata');
 
         fetch(url, { signal })
             .then(res => {

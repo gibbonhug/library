@@ -42,22 +42,3 @@ export interface LibraryProps {
     handleDelete: (id: number) => void;
     handleRead: (id: number) => void;
 }
-
-/**
- * This is used for both Home and LibraryPage
- * Props:
- * - isLoadingData: whether fetch request is still ongoing
- * - isError: whether there was an error retrieving data
- * - error: an error if it exists
- * - libraryArray: data fetched to be passed down to libraries and books
- * - handleDelete: func to delete a book
- * - handleRead: functto toggle read/unread status
- */
-export interface HomeProps {
-    isLoadingData: boolean;
-    isError: boolean;
-    error: Error | null;
-    libraryArray: BookInfo[];
-    handleDelete: (id: number) => void;
-    handleRead: (id: number) => void;
-}
