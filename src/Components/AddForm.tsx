@@ -98,7 +98,7 @@ const AddForm: React.FC = () => {
                     ></input>
                 </div>
                 {!isPending && (
-                    <button className='add-form-submit'>Add Book</button>
+                    <button className='add-form-submit' type='submit'>Add Book</button>
                 )}
                 {isPending && (
                     <button className='add-form-submit' type='submit' disabled>Adding Your Book...</button>
