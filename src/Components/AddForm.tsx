@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 /**
  * Form to put new books
@@ -27,6 +27,10 @@ const AddForm: React.FC = () => {
      * The read status of the book to add: checkbox input
      */
     const [read, setRead] = useState<boolean>(false);
+    /**
+     * useNavigate
+     */
+    const navigate = useNavigate();
 
     /**
      * Is post request awaiting response? Toggled disabled submit button
@@ -46,6 +50,8 @@ const AddForm: React.FC = () => {
         }).then(() => {
             setIsPending(false);
         });
+
+        Navigate(-1);
     };
 
     return (
