@@ -9,7 +9,7 @@ import { BookInfo } from './interfaces';
  * The home component
  * Fetches book data with useFetchData
  * @returns Conditional loading, error, or 2 library components
- * (All books and just read books)
+ * (1: All books; 2: read books)
  * All in a div with className of 'content-wrapper'
  */
 const Home: React.FC = () => {
