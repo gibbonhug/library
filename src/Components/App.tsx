@@ -7,8 +7,6 @@ import Babo from './Babo'; // temp just to have routes
 import AddForm from './AddForm'; // temp just to have routes
 import LibraryPage from './LibraryPage';
 
-import { BookInfo } from './interfaces';
-
 /**
  * The brain of the App
  * @returns A div containing all other components; everything
