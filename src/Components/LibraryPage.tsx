@@ -30,7 +30,7 @@ const LibraryPage: React.FC = () => {
 
     /**
      * Clicking the 'delete' button in a book calls this function, removing it from
-     * the App's libraryArray state
+     * various libraryArray state
      * @param id The id of the book to delete (is in bookInfo obj in book props)
      */
     const handleDelete = (id: number) => {
