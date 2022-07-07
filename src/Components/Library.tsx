@@ -23,11 +23,11 @@ const Library: React.FC<LibraryProps> = (props) => {
      */
     const libraryArray = props.libraryArray;
     /**
-     * handleDelete: passing this down to Books to delete them up in App
+     * handleDelete: passing this down to Books to delete them up in Home
      */
     const handleDelete = props.handleDelete;
     /**
-     * handleRead: passing this down to Books to toggle their read status in App
+     * handleRead: passing this down to Books to toggle their read status in Home
      */
     const handleRead = props.handleRead;
 
