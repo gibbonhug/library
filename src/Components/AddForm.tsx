@@ -51,7 +51,6 @@ const AddForm: React.FC = () => {
             setIsPending(false);
         });
 
-        Navigate(-1);
     };
 
     return (
