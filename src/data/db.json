@@ -1,74 +1,11 @@
 {
   "books": [
     {
-      "title": "Anna Karenina",
-      "author": "Leo Tolstoy",
-      "pageCount": 960,
-      "read": false,
-      "id": 0
-    },
-    {
-      "title": "As I Lay Dying",
-      "author": "William Faulkner",
-      "pageCount": 288,
+      "title": "The Epic of Gilgamesh",
+      "author": "Anonymous",
+      "pageCount": 1,
       "read": true,
       "id": 1
-    },
-    {
-      "title": "Gone with the Wind",
-      "author": "Margaret Mitchell",
-      "pageCount": 1037,
-      "read": false,
-      "id": 2
-    },
-    {
-      "title": "Jane Eyre",
-      "author": "Charlotte Brontë",
-      "pageCount": 680,
-      "read": true,
-      "id": 3
-    },
-    {
-      "title": "Test Title",
-      "author": "Test Author",
-      "pageCount": 1500,
-      "read": true,
-      "id": 4
-    },
-    {
-      "title": "My Book",
-      "author": "Me",
-      "pageCount": 1,
-      "read": true,
-      "id": 5
-    },
-    {
-      "title": "New",
-      "author": "New",
-      "pageCount": 9,
-      "read": false,
-      "id": 6
-    },
-    {
-      "title": "Book",
-      "author": "Author",
-      "pageCount": 1,
-      "read": false,
-      "id": 7
-    },
-    {
-      "title": "a",
-      "author": "a",
-      "pageCount": 1,
-      "read": false,
-      "id": 8
-    },
-    {
-      "title": "e",
-      "author": "e",
-      "pageCount": 1,
-      "read": false,
-      "id": 9
     }
   ]
 }

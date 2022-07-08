@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 /**
- * Fetching data 
+ * Fetching data from JSON given url
  * @param url: URL of the JSON data to fetch
  * type param DataType: type of data (type param)
  * @returns An object to be destructured:

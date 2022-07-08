@@ -28,16 +28,26 @@ const Home: React.FC = () => {
     } = useFetchData<BookInfo[]>('http://localhost:8000/books');
 
     /**
-     * Clicking the 'delete' button in a book calls this function, removing it from
-     * the App's libraryArray state
+     * Clicking the 'delete' button in a book calls this function, removing 
+     * it with DELETE from the JSON db(for now)
+     * also very uglily sets new state
      * @param id The id of the book to delete (is in bookInfo obj in book props)
      */
     const handleDelete = (id: number) => {
+        /**
+         * First filter array to everything except the thing we're deleting
+         * to set it later
+         */
         const newLibraryArray = libraryArray!.filter(
             (bookObj) => bookObj.id !== id
         );
-        setLibraryArray(newLibraryArray);
+        fetch('http://localhost:8000/books/' + id, {
+            method: 'DELETE'
+        }).then(() => {
+            setLibraryArray(newLibraryArray);
+        })
     };
+
 
     /**
      * Clicking the 'Toggle read status' button in a book calls this, which toggles
