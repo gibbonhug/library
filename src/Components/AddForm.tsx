@@ -40,7 +40,7 @@ const AddForm: React.FC = () => {
     /**
      * When we click submit button, we POST data in form
      * This changes isPending to appropriate bool
-     * Also navigates to last page in history
+     * Also goes to home page (/) after submit
      * @param evt The clicking 'submit' button event 
      */
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
@@ -54,7 +54,7 @@ const AddForm: React.FC = () => {
             body: JSON.stringify(bookToAdd),
         }).then(() => {
             setIsPending(false); // no longer awaiting resolution
-            navigate(-1); // go to the prev page in history
+            navigate('/'); // go to the home page
         });
 
     };
