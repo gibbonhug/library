@@ -6,7 +6,6 @@
 - Post request in custom hook, not just in AddForm (also catch errors, currently not catching errors)
 
 ## Meta
-- Type React Router things ? Not sure if these are automatically used
 - TypeScript in general typings, interfaces is rather messy bad practice.
 - Likely have to clean up old comments, docs from moving various things from App into children
 - Figure out design, where to take this. 'Goodreads clone' or something else?

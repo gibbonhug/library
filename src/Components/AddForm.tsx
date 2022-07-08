@@ -28,7 +28,7 @@ const AddForm: React.FC = () => {
      */
     const [read, setRead] = useState<boolean>(false);
     /**
-     * useNavigate
+     * useNavigate TODO comments
      */
     const navigate = useNavigate();
 
@@ -51,6 +51,7 @@ const AddForm: React.FC = () => {
             setIsPending(false);
         });
 
+        navigate(-1);
     };
 
     return (
