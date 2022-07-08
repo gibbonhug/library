@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
  * each label/input pair is in a div with class of 'add-form-section'
  * Also has a submit button with class of 'add-form-submit'
  */
-
 const AddForm: React.FC = () => {
     /**
      * The title of the book to add: text input
@@ -20,9 +19,9 @@ const AddForm: React.FC = () => {
     const [author, setAuthor] = useState<string>('');
     /**
      * The page count of the book to add: number input
-     * Min value of 1
+     * Min value of 1 (Not allowing 0-page books etc)
      */
-    const [pageCount, setPageCount] = useState<number>(1); // 0 pages not allowed
+    const [pageCount, setPageCount] = useState<number>(1);
     /**
      * The read status of the book to add: checkbox input
      */
@@ -38,6 +37,12 @@ const AddForm: React.FC = () => {
      */
     const [isPending, setIsPending] = useState<boolean>(false);
 
+    /**
+     * When we click submit button, we POST data in form
+     * This changes isPending to appropriate bool
+     * Also navigates to last page in history
+     * @param evt The clicking 'submit' button event 
+     */
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault(); // no reload etc
         setIsPending(true); // we are awaiting resolution
@@ -48,10 +53,10 @@ const AddForm: React.FC = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookToAdd),
         }).then(() => {
-            setIsPending(false);
+            setIsPending(false); // no longer awaiting resolution
+            navigate(-1); // go to the prev page in history
         });
 
-        navigate(-1);
     };
 
     return (
